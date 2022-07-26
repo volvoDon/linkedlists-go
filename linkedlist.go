@@ -37,6 +37,19 @@ func (L *List) Insert(key string) {
 	L.tail = l
 }
 
+func PopT(l *List) Node {
+	res := l.tail
+	if l.tail.prev != nil {
+		l.tail = l.tail.prev
+		l.tail.next = nil
+		res.next = nil
+		res.prev = nil
+		} else {
+			fmt.Println("This List only contains one node")
+		}
+	return *res		
+} 	
+
 func (l *List) Display() {
 	list := l.head
 	for list != nil {
@@ -77,3 +90,11 @@ func (l *List) Reverse() {
 	Display(l.head)
 }
 
+//func main()  {
+//list := List{}
+//list.Insert("hello")
+
+//popped := PopT(&list)
+//fmt.Println(popped.key)
+
+//}
